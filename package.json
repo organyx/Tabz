@@ -2,8 +2,12 @@
   "name": "tabz",
   "displayName": "Tabz",
   "version": "0.0.0",
-  "description": "A basic Plasmo extension.",
-  "author": "aleksandrbeliun",
+  "description": "Hold your tabs",
+  "author": {
+    "name": "Aleksandr Beliun",
+    "email": "aleksandr.beliun@gmail.com",
+    "url": "https://github.com/organyx"
+  },
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build"
