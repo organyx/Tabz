@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 
+export interface ListItem {
+  title: string
+  url: string
+  icon: string
+}
 export interface ListState {
-  list: string[]
+  list: ListItem[]
 }
 
 const initialState: ListState = {
   list: []
-}
-
-export interface ListItem {
-  item: string
 }
 
 export interface ListItemIndex {
@@ -22,7 +23,11 @@ const listSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<ListItem>) => {
-      state.list.push(action.payload.item)
+      state.list.push({
+        title: action.payload.title,
+        url: action.payload.url,
+        icon: action.payload.icon
+      })
     },
     remove: (state, action: PayloadAction<ListItemIndex>) => {
       state.list.splice(action.payload.index, 1)
