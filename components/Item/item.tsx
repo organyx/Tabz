@@ -1,9 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
 import { remove } from "~components/List/list-slice";
+import { useAppDispatch } from '~store';
+
 
 function Item({ item, index }: { item: string, index: number }) {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const removeItemHandler = (index: number): void => {
         dispatch(remove({ index }));
     }
