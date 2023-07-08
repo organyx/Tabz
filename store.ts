@@ -1,4 +1,4 @@
-import { Store, configureStore } from "@reduxjs/toolkit"
+import { type Store, configureStore } from "@reduxjs/toolkit"
 import { localStorage } from "redux-persist-webextension-storage"
 
 import {
@@ -14,7 +14,7 @@ import {
 } from "@plasmohq/redux-persist"
 import { Storage } from "@plasmohq/storage"
 
-import listSliceReducer from "~list-slice"
+import listSliceReducer from "~components/List/list-slice"
 
 const rootReducer = listSliceReducer
 

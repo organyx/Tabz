@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { add, remove } from "~list-slice";
-import type { ListState } from "~list-slice";
+import { add, remove } from "~components/List/list-slice";
+import type { ListState } from "~components/List/list-slice";
 import { useRef } from "react";
 
 import { openExtensionOptions } from "~utils"

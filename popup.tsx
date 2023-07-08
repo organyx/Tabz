@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { store, persistor } from '~store'
 
 import "./style.css"
-import ListView from "~listView"
+import ListView from "~components/List/listView"
 
 function IndexPopup() {
   const [data, setData] = useState("")
