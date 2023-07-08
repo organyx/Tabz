@@ -1,4 +1,9 @@
 import { type Store, configureStore } from "@reduxjs/toolkit"
+import {
+  type TypedUseSelectorHook,
+  useDispatch,
+  useSelector
+} from "react-redux"
 import { localStorage } from "redux-persist-webextension-storage"
 
 import {
@@ -53,3 +58,6 @@ new Storage().watch({
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+
+export const useAppDispatch: () => AppDispatch = useDispatch
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
