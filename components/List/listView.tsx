@@ -18,13 +18,11 @@ function ListView() {
     }
 
     return <div className="flex flex-col p-6 w-96 h-40 max-h-56">
-        <h1>
-            Welcome to your <a href="https://www.plasmo.com">Plasmo</a> Extension!
-        </h1>
-
-        {listValue.length > 0 && <ul className="flex flex-col border border-solid border-cyan-400">
-            {listValue.map((item, index) => <Item key={index} item={item.title} index={index} />)}
-        </ul>}
+        {listValue.length > 0 &&
+            <ul className="flex flex-col border border-solid border-cyan-400">
+                {listValue.map((item, index) => <Item key={index} item={item} index={index} />)}
+            </ul>
+        }
 
         <input type="text" ref={inputRef} maxLength={200} />
         <button className="h-10 w-50 text-blue-400" onClick={addItemHandler}>Add To Storage</button>
