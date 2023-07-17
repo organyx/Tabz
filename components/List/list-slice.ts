@@ -1,10 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 
 export interface ListItem {
   title: string
   url: string
   icon: string
+  id: number
 }
 export interface ListState {
   list: ListItem[]
@@ -26,7 +27,8 @@ const listSlice = createSlice({
       state.list.push({
         title: action.payload.title,
         url: action.payload.url,
-        icon: action.payload.icon
+        icon: action.payload.icon,
+        id: action.payload.id
       })
     },
     remove: (state, action: PayloadAction<ListItemIndex>) => {
