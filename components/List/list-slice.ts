@@ -33,10 +33,13 @@ const listSlice = createSlice({
     },
     remove: (state, action: PayloadAction<ListItemIndex>) => {
       state.list.splice(action.payload.index, 1)
+    },
+    clear: (state) => {
+      state.list = initialState.list
     }
   }
 })
 
-export const { add, remove } = listSlice.actions
+export const { add, remove, clear } = listSlice.actions
 
 export default listSlice.reducer
