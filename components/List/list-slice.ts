@@ -24,6 +24,8 @@ const listSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<ListItem>) => {
+      if (state.list.some((item) => item.id === action.payload.id)) return
+
       state.list.push({
         title: action.payload.title,
         url: action.payload.url,
