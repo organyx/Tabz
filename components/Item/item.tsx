@@ -10,10 +10,15 @@ function Item({ item, index }: { item: ListItem; index: number }) {
   }
 
   return (
-    <li className="flex flex-1 justify-center items-center text-sm">
-      <img src={item.icon} width="15px" />
-      <a href={item.url}>{item.title}</a>
-      <VscTrash onClick={() => removeItemHandler(index)} />
+    <li className="flex flex-1 justify-around items-center text-sm hover hover:bg-slate-600">
+      <img src={item.icon} className="w-6 p-1" />
+      <a href={item.url} className="w-64">
+        {item.title}
+      </a>
+      <VscTrash
+        onClick={() => removeItemHandler(index)}
+        className="group w-6 hover:text-red-500 active:scale-90 transition-all"
+      />
     </li>
   )
 }

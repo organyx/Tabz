@@ -23,9 +23,9 @@ function ListView() {
   }
 
   return (
-    <div className="flex flex-col p-6 w-96 h-40 max-h-56">
+    <div className="flex flex-col p-1 h-52 max-h-56">
       {listValue.length > 0 && (
-        <ul className="flex flex-col border border-solid border-cyan-400">
+        <ul className="flex flex-col">
           {listValue.map((item, index) => (
             <Item key={index} item={item} index={index} />
           ))}
