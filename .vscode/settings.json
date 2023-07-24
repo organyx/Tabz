@@ -30,5 +30,6 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
   "workbench.editor.highlightModifiedTabs": true,
-  "terminal.integrated.smoothScrolling": true
+  "terminal.integrated.smoothScrolling": true,
+  "cSpell.words": ["Tabz"]
 }
