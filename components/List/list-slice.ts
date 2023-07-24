@@ -33,6 +33,18 @@ const listSlice = createSlice({
         id: action.payload.id
       })
     },
+    addMany: (state, action: PayloadAction<ListItem[]>) => {
+      action.payload.forEach((item) => {
+        if (state.list.some((listItem) => listItem.id === item.id)) return
+
+        state.list.push({
+          title: item.title,
+          url: item.url,
+          icon: item.icon,
+          id: item.id
+        })
+      })
+    },
     remove: (state, action: PayloadAction<ListItemIndex>) => {
       state.list.splice(action.payload.index, 1)
     },
@@ -42,6 +54,6 @@ const listSlice = createSlice({
   }
 })
 
-export const { add, remove, clear } = listSlice.actions
+export const { add, addMany, remove, clear } = listSlice.actions
 
 export default listSlice.reducer
