@@ -30,29 +30,29 @@ function Controls() {
       <div className=" border-b border-b-gray-200">
         <div className="join w-full">
           <button
-            className="btn join-item text-xl flex-grow justify-center"
+            className="btn join-item text-xl flex-grow justify-center group hover:text-green-500"
             title="Add current tab to the list"
             onClick={addItemHandler}>
             <VscAdd />
           </button>
           <button
-            className="btn join-item text-xl flex-grow justify-center"
+            className="btn join-item text-xl flex-grow justify-center group hover:text-green-500"
             title="Add all open tabs to the list">
             <VscDiffAdded />
           </button>
           <button
-            className="btn join-item text-xl flex-grow justify-center"
+            className="btn join-item text-xl flex-grow justify-center group hover:text-blue-500"
             title="Check tabs list">
             <VscRefresh />
           </button>
           <button
-            className="btn join-item text-xl flex-grow justify-center"
+            className="btn join-item text-xl flex-grow justify-center group hover:text-red-500"
             title="Clear all tabs"
             onClick={clearAllHandler}>
             <VscTrash />
           </button>
           <button
-            className="btn join-item text-xl flex-grow justify-center"
+            className="btn join-item text-xl flex-grow justify-center group hover:text-fuchsia-500"
             title="Settings"
             onClick={openExtensionOptions}>
             <VscSettingsGear />

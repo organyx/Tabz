@@ -6,7 +6,7 @@ function ListView() {
   const listValue = useAppSelector((state: ListState) => state.list)
 
   return (
-    <div className="flex flex-col p-1 h-52 max-h-56">
+    <div className="flex flex-col p-1 h-52 max-h-56 w-96">
       {listValue.length > 0 ? (
         <ul className="flex flex-col">
           {listValue.map((item, index) => (
