@@ -30,6 +30,10 @@ function Controls() {
     dispatch(addMany(list))
   }
 
+  const tabsToBookmarksHandler = (): void => {
+    console.log("tabsToBookmarksHandler")
+  }
+
   const clearAllHandler = (): void => {
     dispatch(clear())
   }
@@ -52,7 +56,8 @@ function Controls() {
           </button>
           <button
             className="btn join-item text-xl flex-grow justify-center group hover:text-blue-500"
-            title="Check tabs list">
+            title="Convert Tabs to Bookmarks"
+            onClick={tabsToBookmarksHandler}>
             <VscRefresh />
           </button>
           <button
