@@ -6,7 +6,7 @@ import {
   VscTrash
 } from "react-icons/vsc"
 
-import { add, clear } from "~components/List/list-slice"
+import { add, addMany, clear } from "~components/List/list-slice"
 import { useAppDispatch } from "~store"
 import { openExtensionOptions } from "~utils"
 
@@ -17,8 +17,17 @@ function Controls() {
     const tabs = await chrome.tabs.query({ active: true, currentWindow: true })
     const { id, title, url, favIconUrl } = tabs[0]
     const item = { icon: favIconUrl, title, url, id }
-    console.log("🚀 ~ file: listView.tsx:28 ~ addItemHandler2 ~ item:", item)
     dispatch(add(item))
+  }
+
+  const addAllHandler = async (event): Promise<void> => {
+    const tabs = await chrome.tabs.query({ currentWindow: true })
+    const list = tabs.map((tab) => {
+      const { id, title, url, favIconUrl } = tab
+      const item = { icon: favIconUrl, title, url, id }
+      return item
+    })
+    dispatch(addMany(list))
   }
 
   const clearAllHandler = (): void => {
@@ -37,7 +46,8 @@ function Controls() {
           </button>
           <button
             className="btn join-item text-xl flex-grow justify-center group hover:text-green-500"
-            title="Add all open tabs to the list">
+            title="Add all open tabs to the list"
+            onClick={addAllHandler}>
             <VscDiffAdded />
           </button>
           <button
