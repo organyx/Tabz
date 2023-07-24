@@ -1,21 +1,23 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
-export interface ListItem {
+export type ListItem = {
   title: string
   url: string
   icon: string
   id: number
 }
-export interface ListState {
+export type ListState = {
   list: ListItem[]
+  bookmarkFolder: chrome.bookmarks.BookmarkTreeNode | null
 }
 
 const initialState: ListState = {
-  list: []
+  list: [],
+  bookmarkFolder: null
 }
 
-export interface ListItemIndex {
+export type ListItemIndex = {
   index: number
 }
 
@@ -50,10 +52,17 @@ const listSlice = createSlice({
     },
     clear: (state) => {
       state.list = initialState.list
+    },
+    setBookmarkFolder: (
+      state,
+      action: PayloadAction<chrome.bookmarks.BookmarkTreeNode>
+    ) => {
+      state.bookmarkFolder = action.payload
     }
   }
 })
 
-export const { add, addMany, remove, clear } = listSlice.actions
+export const { add, addMany, remove, clear, setBookmarkFolder } =
+  listSlice.actions
 
 export default listSlice.reducer
