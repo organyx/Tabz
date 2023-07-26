@@ -33,7 +33,7 @@ function Item({ item, index }: { item: ListItem; index: number }) {
   return (
     <li className="btn flex flex-1 flex-nowrap justify-around items-center px-0">
       <img src={item.icon} className="w-6 p-1" />
-      <div className="tooltip" data-tip={item.title}>
+      <div className="tooltip tooltip-info" data-tip={item.title}>
         <a
           href={item.url}
           target="_blank"
