@@ -58,11 +58,40 @@ const listSlice = createSlice({
       action: PayloadAction<chrome.bookmarks.BookmarkTreeNode>
     ) => {
       state.bookmarkFolder = action.payload
+    },
+    convertTabToBookmark: (state, action: PayloadAction<ListItemIndex>) => {
+      const listItem = state.list[action.payload.index]
+
+      chrome.bookmarks.create({
+        parentId: state.bookmarkFolder?.id,
+        title: listItem.title,
+        url: listItem.url
+      })
+
+      state.list.splice(action.payload.index, 1)
+    },
+    convertAllTabsToBookmarks: (state) => {
+      state.list.forEach((listItem) => {
+        chrome.bookmarks.create({
+          parentId: state.bookmarkFolder?.id,
+          title: listItem.title,
+          url: listItem.url
+        })
+      })
+
+      state.list = initialState.list
     }
   }
 })
 
-export const { add, addMany, remove, clear, setBookmarkFolder } =
-  listSlice.actions
+export const {
+  add,
+  addMany,
+  remove,
+  clear,
+  setBookmarkFolder,
+  convertTabToBookmark,
+  convertAllTabsToBookmarks
+} = listSlice.actions
 
 export default listSlice.reducer
