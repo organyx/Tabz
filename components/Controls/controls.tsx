@@ -1,7 +1,7 @@
 import {
   VscAdd,
+  VscBookmark,
   VscDiffAdded,
-  VscRefresh,
   VscSettingsGear,
   VscTrash
 } from "react-icons/vsc"
@@ -69,7 +69,7 @@ function Controls() {
             className="btn join-item text-xl flex-grow justify-center group hover:text-blue-500"
             title="Convert Tabs to Bookmarks"
             onClick={tabsToBookmarksHandler}>
-            <VscRefresh />
+            <VscBookmark />
           </button>
           <button
             className="btn join-item text-xl flex-grow justify-center group hover:text-red-500"
