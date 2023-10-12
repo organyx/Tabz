@@ -6,7 +6,12 @@ import {
   VscTrash
 } from "react-icons/vsc"
 
-import { add, addMany, clear } from "~components/List/list-slice"
+import {
+  add,
+  addMany,
+  clear,
+  convertAllTabsToBookmarks
+} from "~components/List/list-slice"
 import { useAppDispatch } from "~store"
 import { openExtensionOptions } from "~utils"
 
@@ -30,8 +35,14 @@ function Controls() {
     dispatch(addMany(list))
   }
 
-  const tabsToBookmarksHandler = (): void => {
-    console.log("tabsToBookmarksHandler")
+  const tabsToBookmarksHandler = async (): Promise<void> => {
+    const confirm = window.confirm(
+      "Are you sure you want to convert all of the tabs to a bookmarks?"
+    )
+
+    if (!confirm) return
+
+    dispatch(convertAllTabsToBookmarks())
   }
 
   const clearAllHandler = (): void => {

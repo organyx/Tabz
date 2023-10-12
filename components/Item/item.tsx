@@ -1,11 +1,14 @@
 import { VscBookmark, VscTrash } from "react-icons/vsc"
 
-import { type ListItem, remove } from "~components/List/list-slice"
-import { useAppDispatch, useAppSelector } from "~store"
+import {
+  type ListItem,
+  convertTabToBookmark,
+  remove
+} from "~components/List/list-slice"
+import { useAppDispatch } from "~store"
 
 function Item({ item, index }: { item: ListItem; index: number }) {
   const dispatch = useAppDispatch()
-  const bookmarkFolder = useAppSelector((state) => state.bookmarkFolder)
   const removeItemHandler = (index: number): void => {
     dispatch(remove({ index }))
   }
@@ -14,20 +17,10 @@ function Item({ item, index }: { item: ListItem; index: number }) {
     const confirm = window.confirm(
       "Are you sure you want to convert this tab to a bookmark?"
     )
-    if (confirm) {
-      console.log("tabToBookMarkHandler", bookmarkFolder)
-      const bookmark = {
-        parentId: bookmarkFolder.id,
-        title: item.title,
-        url: item.url
-      }
 
-      const created = await chrome.bookmarks.create(bookmark)
-      console.log(
-        "🚀 ~ file: item.tsx:26 ~ tabToBookMarkHandler ~ created:",
-        created
-      )
-    }
+    if (!confirm) return
+
+    dispatch(convertTabToBookmark({ index }))
   }
 
   return (
